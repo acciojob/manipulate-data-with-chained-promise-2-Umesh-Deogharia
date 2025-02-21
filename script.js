@@ -2,16 +2,20 @@
 
 let arr = [1,2,3,4];
 
-let promise = new promise(resolve , reject)=>{
+let promise = new Promise(resolve , reject)=>{
 	setTImeout(()=>{
-	let oddNumbers = arr.filter((age)=>{
-		return age % 2 !== 0;
-	});
-	},3000);
+	let evenNumbers = arr.filter((age)=> age % 2 === 0);
+		document.querySelector("#output").innerText = evenNumbers;
+		resolve(evenNumbers);
+	},1000);
+}.then((res)=>{
 
-	setTimeout(()=>{
-		
-	})
-		
-	
-}
+	return new Promise(resolve,reject)=>{
+		setTimeout(()=>{
+			let maultiplied = res.map(num => num*2);
+			document.querySelector("#output").innerText = maultiplied;
+		resolve(maultiplied);
+},3000)
+	}
+
+})
